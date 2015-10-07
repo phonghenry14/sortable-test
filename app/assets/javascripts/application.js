@@ -16,25 +16,20 @@
 //= require_tree .
 
 
-$(document).ready(function(){
-  $('#books').sortable({
+$(function() {
+  $('#rankings').sortable({
     axis: 'y',
-    dropOnEmpty: false,
-    handle: '.handle',
-    cursor: 'crosshair',
-    items: 'li',
-    opacity: 0.4,
-    scroll: true,
-    update: function(){
-      $.ajax({
-        type: 'post',
-        data: $('#books').sortable('serialize'),
-        dataType: 'script',
-        complete: function(request){
-          $('#books').effect('highlight');
-        },
-        url: '/books/sort'
-      })
+    items: '.sortable',
+    start: function () {
+      $(this).find("li:not(.sortable)").each(function () {
+          $(this).data("fixedIndex", $(this).index());
+      });
+    },
+    change: function () {
+      $(this).find("li:not(.sortable)").each(function () {
+          $(this).detach().insertAfter($("#rankings li:eq(" + ($(this).data("fixedIndex")-1) + ")"));
+      });
     }
   });
 });
+
