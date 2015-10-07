@@ -1,5 +1,9 @@
 <h1>Listing books</h1>
-<ul id="books"> <% @books.each do |book| %>
-  <li id="book_<%= book.id %>"><span class="handle">[drag]</span><%= book.name %></li>
-<% end %></ul>
+<ol id="rankings"> <% @books.each do |book| %>
+  <% if book.id.odd? %>
+    <li class="sortable"><%= book.name %></li>
+  <% else %>
+    <li class=""><%= book.name %></li>
+  <% end %>
+<% end %></ol>
 <%= link_to 'New book', new_book_path %>

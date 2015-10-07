@@ -4,7 +4,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.order('books.position ASC')
+    @books = Book.all
   end
 
   def sort

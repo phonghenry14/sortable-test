@@ -15,3 +15,11 @@
  */
 
 .handle:hover{cursor: move;}
+
+ol#rankings li {
+    background-color: #f00;
+}
+
+ol#rankings li.sortable {
+    background-color: #0f0;
+}
