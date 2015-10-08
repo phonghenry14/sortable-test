@@ -1,9 +1,13 @@
 <h1>Listing books</h1>
-<ol id="rankings"> <% @books.each do |book| %>
-  <% if book.id.odd? %>
-    <li class="sortable"><%= book.name %></li>
-  <% else %>
-    <li class=""><%= book.name %></li>
-  <% end %>
-<% end %></ol>
+<div class="demo">
+  <ul id="sortable">
+    <% @books.each do |book| %>
+      <% if book.id.odd? %>
+        <li class="ui-state-default"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= book.name %></li>
+      <% else %>
+        <li class="ui-state-default fixed"><span class="ui-icon ui-icon-arrowthick-2-n-s"></span><%= book.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
 <%= link_to 'New book', new_book_path %>
